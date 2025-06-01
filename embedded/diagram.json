@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
+    { "type": "board-ds18b20", "id": "temp1", "top": 66.07, "left": -91.92, "attrs": {} },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": 61.6, "left": -237.78, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 102, "left": 119, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 138.35,
+      "left": 153.6,
+      "attrs": { "value": "330" }
+    },
+    { "type": "wokwi-led", "id": "led2", "top": -13.2, "left": 119, "attrs": { "color": "cyan" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 32.75,
+      "left": 144,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 44.4,
+      "left": 157.8,
+      "attrs": { "color": "purple", "flip": "1" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 100.25,
+      "left": 152.2,
+      "rotate": 180,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:5V", "temp1:VCC", "red", [ "h-67.05", "v-211.2" ] ],
+    [ "pir1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "temp1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "pir1:VCC", "esp:5V", "red", [ "v0" ] ],
+    [ "r1:1", "led1:A", "green", [ "v0" ] ],
+    [ "r2:1", "led2:A", "green", [ "v0" ] ],
+    [ "led1:C", "esp:GND.3", "green", [ "v0" ] ],
+    [ "r1:2", "esp:2", "green", [ "v0" ] ],
+    [ "led2:C", "esp:GND.2", "green", [ "v0" ] ],
+    [ "r2:2", "esp:23", "green", [ "v9.6", "h-78", "v-9.6" ] ],
+    [ "esp:22", "led3:A", "green", [ "h28.8", "v9.6", "h38.4", "v28.8" ] ],
+    [ "r3:2", "esp:GND.3", "green", [ "v0" ] ],
+    [ "led3:C", "r3:1", "green", [ "v0", "h28.8" ] ],
+    [ "pir1:OUT", "esp:15", "green", [ "v76.8", "h316.66", "v-57.6" ] ],
+    [ "temp1:DQ", "esp:4", "green", [ "v124.8", "h192", "v-96" ] ]
+  ],
+  "dependencies": {}
+}
