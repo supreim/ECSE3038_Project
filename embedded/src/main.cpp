@@ -6,21 +6,21 @@
 #include <DS18B20.h>
 #include "../env.h"
 
+// pins
 #define ONE_WIRE_BUS 4
 #define LIGHT 22
 #define FAN 23 
 #define PIR 15
 #define STATUS_LED 2
 
-//temp sensor stuff
+//sensors
 OneWire oneWire(ONE_WIRE_BUS);
 DS18B20 sensor(&oneWire);
 
-// put function declarations here:
+
 void send_temp_presence(float acquired_temp, int PIR_STATE);
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(115200);
 
   pinMode(FAN, OUTPUT);
